@@ -25,12 +25,12 @@
 
     <form action="${pageContext.request.contextPath}/ViewedRegisterServlet" method="post">
         <div class="form-group">
-            <label for="title">タイトル:</label>
+            <label for="title">タイトル</label><br>
             <input type="text" id="title" name="title" required>
-        </div>
+        </div><br>
 
         <div class="form-group">
-            <label>ジャンル:</label><br>
+            
             <%
                 if (genres != null) {
                     for (Genre genre : genres) {
@@ -38,7 +38,7 @@
                 <label>
                     <input type="checkbox" name="genreIds" value="<%= genre.getId() %>">
                     <%= genre.getName() %>
-                </label><br>
+                </label>
             <%
                     }
                 } else {

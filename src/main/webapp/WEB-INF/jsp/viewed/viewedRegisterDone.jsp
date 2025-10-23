@@ -17,7 +17,7 @@
     <h2>登録が完了しました</h2>
     <p>観たい作品を登録しました。</p>
 
-    <form action="${pageContext.request.contextPath}/WishListServlet" method="get">
+    <form action="${pageContext.request.contextPath}/ViewedListServlet" method="get">
         <input type="submit" value="一覧へ戻る" class="nav_btn">
     </form>
 

@@ -37,19 +37,21 @@
         %>
             <li>
             	<a href="${pageContext.request.contextPath}/ViewedDetailServlet?id=<%= work.getId() %>" class="work-link">
-                <div class="title"><%= work.getTitle() %></div>
-                <div class="label">評価: <%= work.getStarLabel() %></div>
-                <div class="genres">
-				ジャンル: <%= work.getGenres() != null ? String.join(", ", work.getGenres()) : "ジャンルなし" %>
+                <div class="title">【<%= work.getTitle() %>】</div>
+                <div class="info-row">
+					  <div class="label"><%= work.getStarLabel() %></div>
+					  <div class="genres"><%= work.getGenres() != null ? String.join(", ", work.getGenres()) : "ジャンルなし" %></div>
 				</div>
-                <div class="review">レビュー: <%= work.getReview() %></div>
+
                 </a>
             </li>
         <%
             }
         %>
         </ul>
-        <a class="btn" href="ViewedRegisterServlet">新しい作品を登録</a>
+        <div class="centered">
+  			<a class="nav_btn" href="ViewedRegisterServlet">新しい作品を登録</a>
+		</div>
     <%
         }
     %>

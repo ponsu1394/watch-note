@@ -125,6 +125,43 @@ main ul li {
   display: inline-block;
 }
 
+.centered {
+  text-align: center;
+  margin: 30px 0;
+}
+
+
+/* ========== ボタン ========== */
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 30px 0;
+  list-style: none;
+  padding: 0;
+}
+
+.btn-group li {
+  display: inline-block;
+}
+
+.btn {
+  width: 70px;
+  text-align: center;
+  display: inline-block;
+  margin: 0 7px;
+  padding: 10px 20px;
+  background-color: #1e90ff;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.btn:hover {
+  transform: translateY(2px);
+  background-color: #0000cd;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+  opacity: 0.85;
+}
 
 /* ========== 見出し ========== */
 h2 {
@@ -134,85 +171,6 @@ h2 {
 }
 
 
-
-/* ========== フォーム ========== */
-/*--検索・会員登録--*/
-form.search,
-form.regist {
-  padding: 20px;
-  border: 2px solid #333;
-  border-radius: 5px;
-  text-align: center;
-}
-form.regist {
-  padding: 20px 5px;
-}
-form.search p,
-form.regist p {
-  font-size: 12px;
-  margin: 10px;
-}
-form.search label,
-form.regist label {
-  line-height: 1.75rem;
-  display: flex;
-  justify-content: space-between;
-}
-form.search select,
-form.regist select {
-  width: 16em;
-  border: 1px solid #CCC;
-}
-/*--問い合わせフォーム用--*/
-form.regist .wide {
-	width: 76%;
-}
-form.regist pre {
-	line-height: 1.75em;
-    white-space: pre-wrap;
-    background: #ddd;
-    padding: 10px;
-}
-/*--店舗登録用--*/
-form.store label {
-	display: inline-flex;
-    width: 7em;
-}
-form.store input,
-form.store textarea {
-	width: 16em;
-	display: inline-table;
-	margin-top: 10px;
-}
-form.store select {
-	width: 16em;
-	border: 1px solid #999;
-	margin-top: 10px;
-}
-form.store label.checkbox  {
-	display:inline;
-}
-form.store input[type="checkbox"]  {
-	width: 15px;
-	margin-top: 20px;
-}
-form.store textarea {
-  overflow: auto;
-  white-space: pre-wrap;
-  word-break: break-word;
-  display: -webkit-inline-box;
-}
-.ramen_detail_check iframe {width:90%;}
-/*-----------------*/
-
-form.search input[type="submit"],
-form.regist input[type="submit"]  {
-  margin-top: 15px;
-  width: 10em;
-}
-
-
-
 /* ========== フッター ========== */
 #footer {
   margin-top: 50px;
@@ -220,34 +178,37 @@ form.regist input[type="submit"]  {
   padding: 10px;
 }
 
-/* ========== メッセージ・戻るボタン ========== */
-.msg_info {
-  margin: 50px auto;
+/* ======作品一覧 ====== */
+
+/* 枠線  */
+.work-link {
+  display: block;
+  padding: 5px;
+  margin: 15px auto;
+  width: 90%;
+  border: 1px solid #fff;
 }
-.msg_frame {
-	margin: 25px auto;
-    padding: 20px 10px 20px 40px;
-    border: 2px solid #333;
-    border-radius: 5px;
-    line-height: 2em;
-    text-align: left;
+.work-link .label {
+	color: #FFFF00;
+	font-size: 2em;
 }
-.simple_frame { /*ただの黒い枠ならこれを使用*/
-  padding: 20px;
-  border: 2px solid #333;
-  border-radius: 5px;
-  text-align: center;
+
+.info-row {
+  display: flex;
+  gap: 20px; /* ラベルとジャンルの間隔 */
+  align-items: center;
+  margin-bottom: 8px;
 }
-.historyback {
-  text-align: center;
-  margin: 20px auto;
+
+/* ======作品詳細 ====== */
+.updated-date {
+  text-align: right;
+  margin: 10px 20px;
+  font-size: 0.95em;
+  color: #fff;
 }
-.historyback i {
-  margin-right: 10px;
-}
-.historyback button {
-  cursor: pointer;
-}
+
+
 
 
 /* ========== メディアクエリ ========== */

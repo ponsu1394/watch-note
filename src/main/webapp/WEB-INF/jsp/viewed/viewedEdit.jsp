@@ -22,25 +22,14 @@
 	%>
 	<jsp:include page="/WEB-INF/jsp/inc/tab.jsp" />
 	
-    <h2>作品を編集</h2>
-
+    <h2>作品の編集</h2>
+	<div class="work-link">
     <form action="${pageContext.request.contextPath}/ViewedEditCheckServlet" method="post">
         <input type="hidden" name="step" value="confirm">
 
         <label>タイトル:</label><br>
         <input type="text" name="title" value="<%= work.getTitle() %>" required><br><br>
 
-        <label>評価（1〜5）:</label><br>
-        <select name="starId">
-        <%
-            for (Star star : stars) {
-                boolean selected = star.getId() == work.getStarId();
-        %>
-            <option value="<%= star.getId() %>" <%= selected ? "selected" : "" %>><%= star.getLabel() %></option>
-        <%
-            }
-        %>
-        </select><br><br>
 
         <label>ジャンル（複数選択可）:</label><br>
         <%
@@ -54,6 +43,18 @@
         <%
             }
         %>
+        
+        <label>5段階評価</label>
+        <select name="starId">
+        <%
+            for (Star star : stars) {
+                boolean selected = star.getId() == work.getStarId();
+        %>
+            <option value="<%= star.getId() %>" <%= selected ? "selected" : "" %>><%= star.getLabel() %></option>
+        <%
+            }
+        %>
+        </select><br><br>
 
         <label>感想:</label><br>
         <textarea name="review" rows="6" cols="50" required><%= work.getReview() %></textarea><br><br>
@@ -66,6 +67,7 @@
     	<input type="hidden" name="id" value="<%= work.getId() %>">
     	<input type="submit" value="削除" class="nav_btn">
 	</form>
+	</div>
 
 	<form action="${pageContext.request.contextPath}/ViewedEditCheckServlet" method="post">
 	    <input type="hidden" name="step" value="confirm">
