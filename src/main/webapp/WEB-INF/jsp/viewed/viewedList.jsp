@@ -1,0 +1,60 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.*, model.ViewedWork" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- リンク -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+    <title>WatchNote 観た作品一覧</title>
+    
+</head>
+<body>
+	
+	<!-- ヘッダーをインクルード -->
+    <jsp:include page="/WEB-INF/jsp/inc/header.jsp" />
+    
+    <%
+  		request.setAttribute("pageName", "viewed");
+	%>
+	<jsp:include page="/WEB-INF/jsp/inc/tab.jsp" />
+    
+    
+    <%
+        List<ViewedWork> works = (List<ViewedWork>) request.getAttribute("works");
+        if (works == null || works.isEmpty()) {
+    %>
+        <p>表示する作品がありません。</p>
+    <%
+        } else {
+    %>
+        <ul>
+        <%
+            for (ViewedWork work : works) {
+        %>
+            <li>
+            	<a href="${pageContext.request.contextPath}/ViewedDetailServlet?id=<%= work.getId() %>" class="work-link">
+                <div class="title"><%= work.getTitle() %></div>
+                <div class="label">評価: <%= work.getStarLabel() %></div>
+                <div class="genres">
+				ジャンル: <%= work.getGenres() != null ? String.join(", ", work.getGenres()) : "ジャンルなし" %>
+				</div>
+                <div class="review">レビュー: <%= work.getReview() %></div>
+                </a>
+            </li>
+        <%
+            }
+        %>
+        </ul>
+        <a class="btn" href="ViewedRegisterServlet">新しい作品を登録</a>
+    <%
+        }
+    %>
+    
+    <!-- フッターをインクルード -->
+    <jsp:include page="/WEB-INF/jsp/inc/footer.jsp" />
+</body>
+</html>
