@@ -2,7 +2,6 @@
 <%@ page import="java.util.*, model.Star, model.Genre, model.WishlistWork" %>
 <%
     WishlistWork work = (WishlistWork) request.getAttribute("work");
-    List<Star> stars = (List<Star>) request.getAttribute("stars"); // ← 使ってなければ削除OK
     List<Genre> genres = (List<Genre>) request.getAttribute("genres");
 
     Object genreIdsObj = request.getAttribute("genreIds");
