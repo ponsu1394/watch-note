@@ -21,8 +21,8 @@
 	<%
   		request.setAttribute("pageName", "wish");
 	%>
-	<jsp:include page="/WEB-INF/jsp/inc/tabnav.jsp" />
-
+	<jsp:include page="/WEB-INF/jsp/inc/tab.jsp" />
+<
     <h2>編集内容の確認</h2>
 
     <p><strong>タイトル：</strong><%= title %></p>

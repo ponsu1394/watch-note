@@ -20,7 +20,7 @@
 	<%
   		request.setAttribute("pageName", "wish");
 	%>
-	<jsp:include page="/WEB-INF/jsp/inc/tabnav.jsp" />
+	<jsp:include page="/WEB-INF/jsp/inc/tab.jsp" />
 
     <h2>観たい作品を編集</h2>
 

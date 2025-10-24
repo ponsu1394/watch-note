@@ -22,7 +22,7 @@
 	<%
   		request.setAttribute("pageName", "wish");
 	%>
-	<jsp:include page="/WEB-INF/jsp/inc/tabnav.jsp" />
+	<jsp:include page="/WEB-INF/jsp/inc/tab.jsp" />
 
     <h2>観たい作品を登録</h2>
     <form action="${pageContext.request.contextPath}/WishlistRegisterServlet" method="post">

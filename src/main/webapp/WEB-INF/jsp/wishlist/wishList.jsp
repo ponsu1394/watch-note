@@ -16,7 +16,7 @@
 	<%
   		request.setAttribute("pageName", "wish");
 	%>
-	<jsp:include page="/WEB-INF/jsp/inc/tabnav.jsp" />
+	<jsp:include page="/WEB-INF/jsp/inc/tab.jsp" />
 	
 
     <%

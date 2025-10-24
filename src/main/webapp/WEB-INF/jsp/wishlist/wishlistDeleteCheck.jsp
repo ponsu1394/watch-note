@@ -12,8 +12,7 @@
 	<%
   		request.setAttribute("pageName", "wish");
 	%>
-	<jsp:include page="/WEB-INF/jsp/inc/tabnav.jsp" />
-
+	<jsp:include page="/WEB-INF/jsp/inc/tab.jsp" />
     <h2>削除確認</h2>
     <p>「<strong><%= request.getAttribute("title") %></strong>」を削除しますか？</p>
 
