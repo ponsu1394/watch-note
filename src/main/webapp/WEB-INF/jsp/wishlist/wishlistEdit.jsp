@@ -1,11 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.List" %>
-<%@ page import="model.Star, model.Genre, model.WishlistWork" %>
+<%@ page import="java.util.*, model.Star, model.Genre, model.WishlistWork" %>
 <%
     WishlistWork work = (WishlistWork) request.getAttribute("work");
     List<Star> stars = (List<Star>) request.getAttribute("stars"); // ← 使ってなければ削除OK
     List<Genre> genres = (List<Genre>) request.getAttribute("genres");
-    List<Integer> selectedGenreIds = (List<Integer>) request.getAttribute("genreIds");
+
+    Object genreIdsObj = request.getAttribute("genreIds");
+    List<Integer> selectedGenreIds = new ArrayList<>();
+
+    if (genreIdsObj instanceof List) {
+        selectedGenreIds = (List<Integer>) genreIdsObj;
+    } else if (genreIdsObj instanceof String[]) {
+        for (String idStr : (String[]) genreIdsObj) {
+            try {
+                selectedGenreIds.add(Integer.parseInt(idStr));
+            } catch (NumberFormatException e) {
+                // 無効なIDはスキップ（必要ならログ出力）
+            }
+        }
+    }
 %>
 <!DOCTYPE html>
 <html>
