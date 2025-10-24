@@ -21,12 +21,12 @@
 
     <form action="${pageContext.request.contextPath}/ViewedDeleteServlet" method="post">
         <input type="hidden" name="id" value="<%= id %>">
-        <input type="submit" value="削除"">
+        <input type="submit" value="削除" class="nav_btn">
     </form>
 
     <form action="${pageContext.request.contextPath}/ViewedEditServlet" method="get">
         <input type="hidden" name="id" value="<%= id %>">
-        <input type="submit" value="戻る">
+        <input type="submit" value="戻る" class="nav_btn">
     </form>
     <jsp:include page="/WEB-INF/jsp/inc/footer.jsp" />
 </body>

@@ -68,7 +68,7 @@
             </select>
         </div>
 
-        <div class="form-group">
+        <div>
             <label for="review">感想:</label><br>
             <textarea id="review" name="review" rows="6" cols="50" required></textarea>
         </div>

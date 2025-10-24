@@ -16,7 +16,8 @@
 	<jsp:include page="/WEB-INF/jsp/inc/tab.jsp" />
 	    
     <p>登録が完了しました。</p>
-    <a href="${pageContext.request.contextPath}/ViewedListServlet">観た作品一覧へ</a>
+    
+    <a class="btn" href="${pageContext.request.contextPath}/ViewedListServlet">観た作品一覧へ</a>
 	
 	<jsp:include page="/WEB-INF/jsp/inc/footer.jsp" />
 	
