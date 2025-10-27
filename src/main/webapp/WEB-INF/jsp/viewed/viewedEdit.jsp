@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>WatchNote 編集</title>
+    <title>WatchNote 作品の編集</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
     
 </head>
@@ -27,11 +27,11 @@
     <form action="${pageContext.request.contextPath}/ViewedEditCheckServlet" method="post">
         <input type="hidden" name="step" value="confirm">
 
-        <label>タイトル:</label><br>
+        <label>〇タイトル</label><br>
         <input type="text" name="title" value="<%= work.getTitle() %>" required><br><br>
 
 
-        <label>ジャンル（複数選択可）:</label><br>
+        <label>〇ジャンル（複数選択可）</label><br>
         <%
             for (Genre genre : genres) {
                 boolean checked = selectedGenreIds.contains(genre.getId());
@@ -39,11 +39,11 @@
             <label>
                 <input type="checkbox" name="genreIds" value="<%= genre.getId() %>" <%= checked ? "checked" : "" %>>
                 <%= genre.getName() %>
-            </label><br>
+            </label>
         <%
             }
         %>
-        
+        <br><br>
         <label>5段階評価</label>
         <select name="starId">
         <%
@@ -56,7 +56,7 @@
         %>
         </select><br><br>
 
-        <label>感想:</label><br>
+        <label>〇感想</label><br>
         <textarea name="review" rows="6" cols="50" required><%= work.getReview() %></textarea><br><br>
 
         <input type="hidden" name="id" value="<%= work.getId() %>">

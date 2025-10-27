@@ -8,13 +8,17 @@ html {
   color: #fff;
 }
 
-body, h2, h3, p, ul, ol, li, dl, dt, dd, table, tr, th, td {
+body, h2, p, ul,  li {
   background-color: #555555; 
   color: #ffffff;          
   font-family: 'Helvetica', 'Arial', sans-serif;
   margin: 0;
   padding: 0;
 
+}
+
+h2 {
+    text-align: center;
 }
 
 ul, ol, li {

@@ -23,11 +23,11 @@
 	%>
 	<jsp:include page="/WEB-INF/jsp/inc/tab.jsp" />
 	
-    <h2>編集内容の確認</h2>
-
-    <p><strong>タイトル：</strong><%= title %></p>
-    <p><strong>評価：</strong><%= star.getLabel() %></p>
-    <p><strong>ジャンル：</strong>
+    <h2>この内容でよろしいですか？</h2>
+	<div class="work-link">
+    <p><strong>〇タイトル</strong><br><%= title %></p>
+    
+    <p><strong>〇ジャンル</strong><br>
         <%
             Set<Integer> selectedIds = new HashSet<>();
             if (genreIds != null) {
@@ -42,8 +42,10 @@
             }
         %>
     </p>
-    <p><strong>感想：</strong><br><%= review %></p>
-
+    
+    <p><strong>〇5段階評価</strong><br><%= star.getLabel() %></p>
+    <p><strong>〇感想</strong><br><%= review %></p>
+	</div>
     <!-- 更新確定フォーム -->
     <form action="${pageContext.request.contextPath}/ViewedEditServlet" method="post">
         <input type="hidden" name="step" value="update">
