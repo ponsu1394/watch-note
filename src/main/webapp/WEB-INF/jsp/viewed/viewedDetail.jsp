@@ -25,7 +25,7 @@
         <p>【 <%= work.getTitle() %>】</p>
         <p> <%= work.getGenres() != null ? String.join(", ", work.getGenres()) : "ジャンルなし" %></p><br>
         <p>〇おすすめ度</p>
-         <div class="label"><%= work.getStarLabel() %></div>
+         <div class="label" style="text-align: center; font-size: 4em;"><%= work.getStarLabel() %></div>
        
         <p>〇感想</p> <p><%= work.getReview() %></p>
     </div>

@@ -35,8 +35,8 @@
         <%
             for (ViewedWork work : works) {
         %>
-            <li>
-            	<a href="${pageContext.request.contextPath}/ViewedDetailServlet?id=<%= work.getId() %>" class="work-link">
+            <li  class="work-link">
+            	<a href="${pageContext.request.contextPath}/ViewedDetailServlet?id=<%= work.getId() %>">
                 <div class="title">【<%= work.getTitle() %>】</div>
                 <div class="info-row">
 					  <div class="label"><%= work.getStarLabel() %></div>

@@ -15,10 +15,10 @@
 	%>
 	<jsp:include page="/WEB-INF/jsp/inc/tab.jsp" />
 	    
-    <p>登録が完了しました。</p>
-    
-    <a class="btn" href="${pageContext.request.contextPath}/ViewedListServlet">観た作品一覧へ</a>
-	
+    <h2>登録が完了しました。</h2>
+    <div  class="btn-group">
+    	<a class="nav_btn" href="${pageContext.request.contextPath}/ViewedListServlet">観た作品一覧へ</a>
+	</div>
 	<jsp:include page="/WEB-INF/jsp/inc/footer.jsp" />
 	
 </body>

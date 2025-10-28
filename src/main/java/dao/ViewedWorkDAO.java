@@ -23,7 +23,8 @@ public class ViewedWorkDAO {
                 "LEFT JOIN stars s ON vw.star_id = s.id " +
                 "LEFT JOIN viewed_work_genres vwg ON vw.id = vwg.viewed_work_id " +
                 "LEFT JOIN genres g ON vwg.genre_id = g.id " +
-                "GROUP BY vw.id, vw.title, vw.updated_at, vw.star_id, s.label, vw.review ";
+                "GROUP BY vw.id, vw.title, vw.updated_at, vw.star_id, s.label, vw.review "+
+                "ORDER BY vw.star_id DESC";
 
         try (Connection conn = DBManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -133,7 +134,15 @@ public class ViewedWorkDAO {
     
     //作品IDで1件取得する
     public ViewedWork findById(int id) {
-        String sql = "SELECT id, title, updated_at, star_id, review FROM viewed_works WHERE id = ?";
+        String sql = "SELECT vw.id, vw.title, vw.updated_at, vw.star_id, vw.review, s.label AS star_label, " +
+                     "GROUP_CONCAT(DISTINCT g.name ORDER BY g.name SEPARATOR ', ') AS genres " +
+                     "FROM viewed_works vw " +
+                     "LEFT JOIN stars s ON vw.star_id = s.id " +
+                     "LEFT JOIN viewed_work_genres vwg ON vw.id = vwg.viewed_work_id " +
+                     "LEFT JOIN genres g ON vwg.genre_id = g.id " +
+                     "WHERE vw.id = ? " +
+                     "GROUP BY vw.id, vw.title, vw.updated_at, vw.star_id, s.label, vw.review";
+
         try (Connection conn = DBManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
@@ -145,7 +154,17 @@ public class ViewedWorkDAO {
                     work.setTitle(rs.getString("title"));
                     work.setUpdatedAt(rs.getTimestamp("updated_at").toLocalDateTime());
                     work.setStarId(rs.getInt("star_id"));
+                    work.setStarLabel(rs.getString("star_label"));
                     work.setReview(rs.getString("review"));
+
+                    String genreString = rs.getString("genres");
+                    if (genreString != null && !genreString.isEmpty()) {
+                        String[] genreArray = genreString.split(",\\s*");
+                        work.setGenres(Arrays.asList(genreArray));
+                    } else {
+                        work.setGenres(new ArrayList<>());
+                    }
+
                     return work;
                 }
             }

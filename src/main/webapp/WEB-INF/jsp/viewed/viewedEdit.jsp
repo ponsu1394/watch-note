@@ -28,8 +28,9 @@
         <input type="hidden" name="step" value="confirm">
 
         <label>〇タイトル</label><br>
-        <input type="text" name="title" value="<%= work.getTitle() %>" required><br><br>
-
+        <div class="input-wrapper">
+        	<input type="text" name="title" value="<%= work.getTitle() %>" class="input-large" required>
+		</div><br>
 
         <label>〇ジャンル（複数選択可）</label><br>
         <%
@@ -44,7 +45,7 @@
             }
         %>
         <br><br>
-        <label>5段階評価</label>
+        <label>〇5段階評価</label>
         <select name="starId">
         <%
             for (Star star : stars) {
@@ -57,18 +58,27 @@
         </select><br><br>
 
         <label>〇感想</label><br>
-        <textarea name="review" rows="6" cols="50" required><%= work.getReview() %></textarea><br><br>
+        <div class="input-wrapper">
+ 			 <textarea name="review" class="textarea-large" required><%= work.getReview() %></textarea>
+		</div><br>
 
         <input type="hidden" name="id" value="<%= work.getId() %>">
 	</form>
 
-
-    <form action="${pageContext.request.contextPath}/ViewedDeleteCheckServlet" method="post">
-    	<input type="hidden" name="id" value="<%= work.getId() %>">
-    	<input type="submit" value="削除" class="nav_btn">
-	</form>
+		<div  class="btn-group">
+	    <form action="${pageContext.request.contextPath}/ViewedDeleteCheckServlet" method="post">
+	    	<input type="hidden" name="id" value="<%= work.getId() %>">
+	    	<input type="submit" value="削除" class="btn">
+		</form>
+		</div>
 	</div>
-
+	<div  class="btn-group">
+	
+	<form action="${pageContext.request.contextPath}/ViewedDetailServlet" method="get">
+        <input type="hidden" name="id" value="<%= work.getId() %>">
+        <input type="submit" value="戻る" class="btn">
+    </form>
+	
 	<form action="${pageContext.request.contextPath}/ViewedEditCheckServlet" method="post">
 	    <input type="hidden" name="step" value="confirm">
 	    <input type="hidden" name="id" value="<%= work.getId() %>">
@@ -78,16 +88,10 @@
 	    <% for (Integer gid : selectedGenreIds) { %>
 	        <input type="hidden" name="genreIds" value="<%= gid %>">
 	    <% } %>
-    	<input type="submit" value="確認" class="nav_btn">
+    	<input type="submit" value="確認" class="btn">
 	</form>
-
-
-
-    <form action="${pageContext.request.contextPath}/ViewedDetailServlet" method="get">
-        <input type="hidden" name="id" value="<%= work.getId() %>">
-        <input type="submit" value="戻る" class="nav_btn">
-    </form>
-
+	
+	</div>
     <jsp:include page="/WEB-INF/jsp/inc/footer.jsp" />
 </body>
 </html>
