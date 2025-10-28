@@ -24,11 +24,11 @@
 	%>
 	<jsp:include page="/WEB-INF/jsp/inc/tab.jsp" />
 	
-    <h2>登録内容の確認</h2>
+    <h2>この内容でよろしいですか？</h2>
 
-    <p><strong>タイトル:</strong> <%= title %></p>
+    <p><strong>〇タイトル</strong> <%= title %></p>
 
-    <p><strong>ジャンル:</strong><br>
+    <p><strong>〇ジャンル</strong><br>
     <% for (Genre genre : genres) {
            if (selectedList.contains(String.valueOf(genre.getId()))) { %>
         <%= genre.getName() %><br>

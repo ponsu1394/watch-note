@@ -33,9 +33,9 @@
         %>
             <li>
                 <a href="${pageContext.request.contextPath}/WishlistDetailServlet?id=<%= work.getId() %>" class="work-link">
-                    <div class="title"><%= work.getTitle() %></div>
+                    <div class="title">【<%= work.getTitle() %>】</div>
                     <div class="genres">
-                        <%= work.getGenres() != null && !work.getGenres().isEmpty() ? String.join(", ", work.getGenres()) : "ジャンルなし" %>
+                        <%= work.getGenres() != null && !work.getGenres().isEmpty() ? String.join(" / ", work.getGenres()) : "ジャンルなし" %>
                     </div>       
                 </a>
             </li>
@@ -43,7 +43,9 @@
             }
         %>
         </ul>
-        <a class="btn" href="WishlistRegisterServlet">新しい作品を登録</a>
+        <div class="centered">
+        	<a class="btn" href="WishlistRegisterServlet">新しい作品を登録</a>
+        </div>
     <%
         }
     %>

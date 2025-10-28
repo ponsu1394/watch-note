@@ -20,7 +20,7 @@
 	<jsp:include page="/WEB-INF/jsp/inc/tab.jsp" />    
 
     <h2>観たい作品の詳細</h2>
-    <div class="detail-box">
+    <div class="work-link">
         <p><strong>タイトル:</strong> <%= work.getTitle() %></p>
         <p><strong>ジャンル:</strong> <%= work.getGenres() != null && !work.getGenres().isEmpty() ? String.join(", ", work.getGenres()) : "ジャンルなし" %></p>
         <p><strong>メモ:</strong> <%= work.getMemo() != null ? work.getMemo() : "なし" %></p>

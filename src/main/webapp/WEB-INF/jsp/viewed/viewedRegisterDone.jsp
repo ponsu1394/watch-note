@@ -15,12 +15,12 @@
 	<jsp:include page="/WEB-INF/jsp/inc/tab.jsp" />
 	
     <h2>登録が完了しました</h2>
-    <p>観たい作品を登録しました。</p>
-
+ 
+	<div class="btn-group">
     <form action="${pageContext.request.contextPath}/ViewedListServlet" method="get">
         <input type="submit" value="一覧へ戻る" class="nav_btn">
     </form>
-
+	</div>
     <jsp:include page="/WEB-INF/jsp/inc/footer.jsp" />
 </body>
 </html>

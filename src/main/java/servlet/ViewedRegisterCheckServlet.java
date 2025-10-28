@@ -17,19 +17,41 @@ import model.Star;
 
 @WebServlet("/ViewedRegisterCheckServlet")
 public class ViewedRegisterCheckServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 入力値を取得
+    	System.out.println("=== ViewedRegisterCheckServlet POST START ===");
+    	System.out.println("step=" + request.getParameter("step"));
+    	
+    	request.setCharacterEncoding("UTF-8");
+        String step = request.getParameter("step");
+
+
+        if ("修正".equals(step)) {
+            // 入力フォームに戻す処理
+            List<Star> stars = new StarDAO().findAll();
+            List<Genre> genres = new GenreDAO().findAll();
+
+            String title = request.getParameter("title");
+            String review = request.getParameter("review");
+            int starId = Integer.parseInt(request.getParameter("starId"));
+            String[] genreIds = request.getParameterValues("genreIds");
+
+            request.setAttribute("title", title);
+            request.setAttribute("review", review);
+            request.setAttribute("starId", starId);
+            request.setAttribute("genreIds", genreIds);
+            request.setAttribute("stars", stars);
+            request.setAttribute("genres", genres);
+
+            request.getRequestDispatcher("/WEB-INF/jsp/viewed/viewedRegister.jsp").forward(request, response);
+            return;
+        }
+
         String title = request.getParameter("title");
         String review = request.getParameter("review");
         int starId = Integer.parseInt(request.getParameter("starId"));
         String[] genreIds = request.getParameterValues("genreIds");
 
-        // 評価ラベルを取得
         Star star = new StarDAO().findById(starId);
-
-        // 選択されたジャンル名を取得
         List<Genre> allGenres = new GenreDAO().findAll();
         List<Genre> selectedGenres = new ArrayList<>();
         if (genreIds != null) {
@@ -43,13 +65,11 @@ public class ViewedRegisterCheckServlet extends HttpServlet {
             }
         }
 
-        // 表示用にセット
         request.setAttribute("title", title);
         request.setAttribute("review", review);
         request.setAttribute("star", star);
         request.setAttribute("genres", selectedGenres);
 
-        // 確認画面へ
         request.getRequestDispatcher("/WEB-INF/jsp/viewed/viewedRegisterCheck.jsp").forward(request, response);
     }
 }

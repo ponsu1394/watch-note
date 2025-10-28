@@ -40,7 +40,7 @@
                 <div class="title">【<%= work.getTitle() %>】</div>
                 <div class="info-row">
 					  <div class="label"><%= work.getStarLabel() %></div>
-					  <div class="genres"><%= work.getGenres() != null ? String.join(", ", work.getGenres()) : "ジャンルなし" %></div>
+					  <div class="genres"><%= work.getGenres() != null ? String.join(" / ", work.getGenres()) : "ジャンルなし" %></div>
 				</div>
 
                 </a>
