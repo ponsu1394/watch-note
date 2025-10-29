@@ -110,7 +110,7 @@ header ul li.brand {
 /* ========== ナビゲーションボタン ========== */
 .nav_btn {
   display: inline-block;
-  width: 150px;
+  width: 170px;
   text-align: center;
   margin: 0 7px;
   padding: 10px 20px;
@@ -121,7 +121,8 @@ header ul li.brand {
   color: #ffffff;
   font-size: 1em;
   border: none;
-  text-decoration: none; /* ← aタグの下線を消す */
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
 .nav_btn:hover {
@@ -176,6 +177,7 @@ main ul li {
   color: #ffffff;
   border: none;
   font-size: 16px;
+  box-sizing: border-box;
 }
 .btn:hover {
   transform: translateY(2px);

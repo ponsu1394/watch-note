@@ -67,8 +67,9 @@
         </div>
     </div>
     <div class="btn-group">
-        <input type="submit" value="登録する" class="nav_btn">
-        <a href="${pageContext.request.contextPath}/ViewedListServlet" class="nav_btn">一覧に戻る</a>
+    	<a href="${pageContext.request.contextPath}/ViewedListServlet" class="btn">戻る</a>
+        <input type="submit" value="確認" class="btn">
+        
     </div>
     </form>
 

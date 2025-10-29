@@ -52,6 +52,22 @@
 	</div>
 	<div class="btn-group">
 
+
+	<!-- 修正フォーム -->
+    <form action="${pageContext.request.contextPath}/ViewedEditServlet" method="post">
+        <input type="hidden" name="step" value="back">
+        <input type="hidden" name="id" value="<%= id %>">
+        <input type="hidden" name="title" value="<%= title %>">
+        <input type="hidden" name="starId" value="<%= starId %>">
+        <input type="hidden" name="review" value="<%= review %>">
+        <% if (genreIds != null) {
+            for (String gid : genreIds) {
+        %>
+            <input type="hidden" name="genreIds" value="<%= gid %>">
+        <% }} %>
+        <input type="submit" value="戻る" class="btn">
+    </form>
+
     <!-- 更新確定フォーム -->
     <form action="${pageContext.request.contextPath}/ViewedEditServlet" method="post">
         <input type="hidden" name="step" value="update">
@@ -67,20 +83,7 @@
         <input type="submit" value="登録" class="btn">
     </form>
 	
-	<!-- 修正フォーム -->
-    <form action="${pageContext.request.contextPath}/ViewedEditServlet" method="post">
-        <input type="hidden" name="step" value="back">
-        <input type="hidden" name="id" value="<%= id %>">
-        <input type="hidden" name="title" value="<%= title %>">
-        <input type="hidden" name="starId" value="<%= starId %>">
-        <input type="hidden" name="review" value="<%= review %>">
-        <% if (genreIds != null) {
-            for (String gid : genreIds) {
-        %>
-            <input type="hidden" name="genreIds" value="<%= gid %>">
-        <% }} %>
-        <input type="submit" value="戻る" class="btn">
-    </form>
+	
 	
 
    	</div>
