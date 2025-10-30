@@ -24,7 +24,6 @@
     <h2>この内容でよろしいですか？</h2>
     <div class="work-link">
         <p><strong>〇タイトル</strong><br><%= title %></p><br>
-        <p><strong>〇評価</strong><br><%= star.getLabel() %></p><br>
         <p><strong>〇ジャンル</strong><br>
         <% for (int i = 0; i < genres.size(); i++) {
 		    out.print(genres.get(i).getName());
@@ -32,8 +31,8 @@
 		        out.print(" / ");
 		    }
 		} %>
-
         </p><br>
+        <p><strong>〇5段階評価</strong><br><%= star.getLabel() %></p><br>
         <p><strong>〇レビュー</strong><br><%= review %></p>
     </div>
 

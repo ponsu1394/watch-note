@@ -25,7 +25,7 @@
 	</header>
 
 	<main>
-	<div>
+	<div class="work">
 		<ul>
 			<li><a class="nav_btn" href="ViewedListServlet">観た作品一覧</a></li>
 			<li><a class="nav_btn" href="WishListServlet">観たい作品一覧</a></li>	

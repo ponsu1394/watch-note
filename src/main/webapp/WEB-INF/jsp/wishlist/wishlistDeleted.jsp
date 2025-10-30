@@ -13,14 +13,14 @@
   		request.setAttribute("pageName", "wish");
 	%>
 	<jsp:include page="/WEB-INF/jsp/inc/tab.jsp" />    
-
-    <h2>削除完了</h2>
-    <p>「<strong><%= request.getAttribute("title") %></strong>」を削除しました。</p>
-
+	<div class="work">
+    	<p>「<%= request.getAttribute("title") %>」<br>を削除しました。</p>
+    </div>
+	<div class="btn-group">
     <form action="${pageContext.request.contextPath}/WishListServlet" method="get">
-        <input type="submit" value="一覧に戻る" class="nav_btn">
+        <input type="submit" value="観たい作品一覧へ" class="nav_btn">
     </form>
-
+	</div>
     <jsp:include page="/WEB-INF/jsp/inc/footer.jsp" />
 </body>
 </html>

@@ -35,48 +35,58 @@
 	<jsp:include page="/WEB-INF/jsp/inc/tab.jsp" />
 
     <h2>観たい作品を編集</h2>
-
+<div class="work-link">
     <!-- 編集フォーム -->
-    <form action="${pageContext.request.contextPath}/WishlistEditCheckServlet" method="post">
-        <input type="hidden" name="step" value="confirm">
-        <input type="hidden" name="id" value="<%= work.getId() %>">
+<form action="${pageContext.request.contextPath}/WishlistEditCheckServlet" method="post">
+    <input type="hidden" name="step" value="confirm">
+    <input type="hidden" name="id" value="<%= work.getId() %>">
 
-        <label>タイトル:</label><br>
-        <input type="text" name="title" value="<%= work.getTitle() %>" required><br><br>
+    <label>〇タイトル</label><br>
+    <input type="text" name="title" value="<%= work.getTitle() %>" required class="input-large"><br><br>
 
-        <label>ジャンル（複数選択可）:</label><br>
-        <% for (Genre genre : genres) {
-            boolean checked = selectedGenreIds.contains(genre.getId()); %>
-            <label>
-                <input type="checkbox" name="genreIds" value="<%= genre.getId() %>" <%= checked ? "checked" : "" %>>
-                <%= genre.getName() %>
-            </label><br>
-        <% } %>
+    <label>〇ジャンル（複数選択可）</label><br>
+    <% for (Genre genre : genres) {
+        boolean checked = selectedGenreIds.contains(genre.getId()); %>
+        <label>
+            <input type="checkbox" name="genreIds" value="<%= genre.getId() %>" <%= checked ? "checked" : "" %>>
+            <%= genre.getName() %>
+        </label>
+    <% } %>
+    <br><br>
 
-        <label>メモ:</label><br>
-        <textarea name="memo" rows="6" cols="50"><%= work.getMemo() != null ? work.getMemo() : "" %></textarea><br><br>
+    <label>〇メモ</label><br>
+    <textarea name="memo" class="textarea-large"><%= work.getMemo() != null ? work.getMemo() : "" %></textarea><br><br>
 
+    <!-- ボタン配置 -->
+    <div class="btn-group">
         <!-- 削除ボタン -->
-        <button type="button" class="nav_btn" onclick="document.getElementById('deleteForm').submit();">
+        <button type="button" class="btn" onclick="document.getElementById('deleteForm').submit();">
             削除
-        </button><br><br>
+        </button>
+    </div>
+	</div>
+    <div class="btn-group">
+        <!-- 戻るボタン -->
+        <button type="button" class="btn" onclick="document.getElementById('backForm').submit();">
+            戻る
+        </button>
 
-        <!-- 確認ボタン -->
-        <input type="submit" value="確認" class="nav_btn">
-    </form>
+        <!-- 確認ボタン（submit） -->
+        <input type="submit" value="確認" class="btn">
+    </div>
+</form>
 
-    <!-- 削除用フォーム -->
-    <form id="deleteForm" action="${pageContext.request.contextPath}/WishlistDeleteCheckServlet" method="post" style="display:none;">
-	    <input type="hidden" name="id" value="<%= work.getId() %>">
-	    <input type="hidden" name="title" value="<%= work.getTitle() %>">
-	</form>
-
-    <!-- 戻るボタン -->
-    <form action="${pageContext.request.contextPath}/WishlistDetailServlet" method="get" style="margin-top:20px;">
-        <input type="hidden" name="id" value="<%= work.getId() %>">
-        <input type="submit" value="戻る" class="nav_btn">
-    </form>
-
+		<!-- 削除用フォーム（非表示） -->
+		<form id="deleteForm" action="${pageContext.request.contextPath}/WishlistDeleteCheckServlet" method="post" style="display:none;">
+		    <input type="hidden" name="id" value="<%= work.getId() %>">
+		    <input type="hidden" name="title" value="<%= work.getTitle() %>">
+		</form>
+		
+		<!-- 戻る用フォーム（非表示） -->
+		<form id="backForm" action="${pageContext.request.contextPath}/WishlistDetailServlet" method="get" style="display:none;">
+		    <input type="hidden" name="id" value="<%= work.getId() %>">
+		</form>
+	
     <jsp:include page="/WEB-INF/jsp/inc/footer.jsp" />
 </body>
 </html>

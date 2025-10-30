@@ -35,12 +35,20 @@
         <%
             for (ViewedWork work : works) {
         %>
-            <li  class="work-link">
+            <li  class="link">
             	<a href="${pageContext.request.contextPath}/ViewedDetailServlet?id=<%= work.getId() %>">
                 <div class="title">【<%= work.getTitle() %>】</div>
                 <div class="info-row">
-					  <div class="label"><%= work.getStarLabel() %></div>
-					  <div class="genres"><%= work.getGenres() != null ? String.join(" / ", work.getGenres()) : "ジャンルなし" %></div>
+					 <div class="label"><%= work.getStarLabel() %></div>
+					 <div class="genres">
+						    <% if (work.getGenres() != null && !work.getGenres().isEmpty()) {
+						        for (String genre : work.getGenres()) { %>
+						            <span><%= genre %></span>
+						    <%  }
+						       } else { %>
+						        ジャンルなし
+						    <% } %>
+					</div>
 				</div>
 
                 </a>

@@ -12,13 +12,14 @@
   		request.setAttribute("pageName", "wish");
 	%>
 	<jsp:include page="/WEB-INF/jsp/inc/tab.jsp" />
-	
-    <h2>登録が完了しました</h2>
-
-    <form action="${pageContext.request.contextPath}/WishListServlet" method="get">
-        <input type="submit" value="一覧へ戻る" class="btn">
-    </form>
-
+	<div class="work">
+    	<p>登録が完了しました。</p>
+	</div>
+	<div class="btn-group">
+	    <form action="${pageContext.request.contextPath}/WishListServlet" method="get">
+	        <input type="submit" value="一覧へ戻る" class="nav_btn">
+	    </form>
+	</div>
     <jsp:include page="/WEB-INF/jsp/inc/footer.jsp" />
 </body>
 </html>

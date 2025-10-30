@@ -68,8 +68,7 @@
     </div>
     <div class="btn-group">
     	<a href="${pageContext.request.contextPath}/ViewedListServlet" class="btn">戻る</a>
-        <input type="submit" value="確認" class="btn">
-        
+        <input type="submit" value="確認" class="btn">        
     </div>
     </form>
 

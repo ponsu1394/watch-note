@@ -21,12 +21,22 @@
 
     <h2>観たい作品の詳細</h2>
     <div class="work-link">
-        <p><strong>タイトル:</strong> <%= work.getTitle() %></p>
-        <p><strong>ジャンル:</strong> <%= work.getGenres() != null && !work.getGenres().isEmpty() ? String.join(", ", work.getGenres()) : "ジャンルなし" %></p>
-        <p><strong>メモ:</strong> <%= work.getMemo() != null ? work.getMemo() : "なし" %></p>
+        <p><span>【<%= work.getTitle() %>】</span></p>
+		<p>
+		    <div class="genres">
+		        <% if (work.getGenres() != null && !work.getGenres().isEmpty()) {
+		            for (String genre : work.getGenres()) { %>
+		                <span><%= genre %></span>
+		        <%  }
+		           } else { %>
+		            ジャンルなし
+		        <% } %>
+		    </div>
+		</p><br>
+        <p><strong>〇あらすじ・メモ</strong><br> <%= work.getMemo() != null ? work.getMemo() : "なし" %></p><br>
     </div>
 
-    <div>
+    <div class="btn-group">
         <ul>
             <li><a class="btn" href="${pageContext.request.contextPath}/WishListServlet">戻る</a></li>
             <li><a class="btn" href="${pageContext.request.contextPath}/WishlistEditServlet?id=${work.id}">編集</a></li>

@@ -32,11 +32,17 @@
             for (WishlistWork work : wishlist) {
         %>
             <li>
-                <a href="${pageContext.request.contextPath}/WishlistDetailServlet?id=<%= work.getId() %>" class="work-link">
+                <a href="${pageContext.request.contextPath}/WishlistDetailServlet?id=<%= work.getId() %>" class="link">
                     <div class="title">【<%= work.getTitle() %>】</div>
-                    <div class="genres">
-                        <%= work.getGenres() != null && !work.getGenres().isEmpty() ? String.join(" / ", work.getGenres()) : "ジャンルなし" %>
-                    </div>       
+					<div class="genres">
+					    <% if (work.getGenres() != null && !work.getGenres().isEmpty()) {
+					        for (String genre : work.getGenres()) { %>
+					            <span><%= genre %></span>
+					    <%  }
+					       } else { %>
+					        ジャンルなし
+					    <% } %>
+					</div>       
                 </a>
             </li>
         <%

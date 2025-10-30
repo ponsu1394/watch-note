@@ -23,9 +23,17 @@
     	<p class="updated-date"><strong>更新日:</strong> <%= work.getUpdatedAt().format(formatter) %></p>
     <div class="work-link">
         <p>【 <%= work.getTitle() %>】</p>
-        <p> <%= work.getGenres() != null ? String.join(", ", work.getGenres()) : "ジャンルなし" %></p><br>
+        <div class="genres">
+		    <% if (work.getGenres() != null && !work.getGenres().isEmpty()) {
+		        for (String genre : work.getGenres()) { %>
+		            <span><%= genre %></span>
+		    <%  }
+		       } else { %>
+		        ジャンルなし
+		    <% } %>
+		</div><br>
         <p>〇おすすめ度</p>
-         <div class="label" style="text-align: center; font-size: 4em;"><%= work.getStarLabel() %></div>
+         <div class="label" style="text-align: center; font-size: 4em; color: #FFFF00;"><%= work.getStarLabel() %></div>
        
         <p>〇感想</p> <p><%= work.getReview() %></p>
     </div>

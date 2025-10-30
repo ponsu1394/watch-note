@@ -31,7 +31,8 @@
     <div class="work-link">
     <form action="${pageContext.request.contextPath}/WishlistRegisterServlet" method="post">
         <label>〇タイトル</label><br>
-        <input type="text" name="title" value="<%= title != null ? title : "" %>" required><br><br>
+        <input type="text" name="title" value="<%= title != null ? title : "" %>" required class="input-large"><br><br>
+
 
         <label>〇ジャンル（複数選択可）</label><br>
         <% for (Genre genre : genres) {
@@ -44,7 +45,8 @@
         <% } %><br><br>
 
         <label>〇あらすじ・メモ</label><br>
-        <textarea name="memo"><%= memo != null ? memo : "" %></textarea><br><br>
+        <textarea name="memo" class="textarea-large"><%= memo != null ? memo : "" %></textarea><br><br>
+
 
         <input type="hidden" name="id" value="<%= id != null ? id : "" %>">
 	</div>

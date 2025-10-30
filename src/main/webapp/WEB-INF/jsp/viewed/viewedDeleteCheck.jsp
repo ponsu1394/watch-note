@@ -21,15 +21,18 @@
     <h2>削除してもよろしいですか？</h2>
 
 	<div class="btn-group">
+	
+	<form action="${pageContext.request.contextPath}/ViewedEditServlet" method="get">
+        <input type="hidden" name="id" value="<%= id %>">
+        <input type="submit" value="戻る" class="btn">
+    </form>
+	
     <form action="${pageContext.request.contextPath}/ViewedDeleteServlet" method="post">
         <input type="hidden" name="id" value="<%= id %>">
         <input type="submit" value="削除" class="btn">
     </form>
 
-    <form action="${pageContext.request.contextPath}/ViewedEditServlet" method="get">
-        <input type="hidden" name="id" value="<%= id %>">
-        <input type="submit" value="戻る" class="btn">
-    </form>
+   
     </div>
     <jsp:include page="/WEB-INF/jsp/inc/footer.jsp" />
 </body>

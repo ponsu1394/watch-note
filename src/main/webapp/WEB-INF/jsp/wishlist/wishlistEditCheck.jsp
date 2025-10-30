@@ -22,11 +22,11 @@
   		request.setAttribute("pageName", "wish");
 	%>
 	<jsp:include page="/WEB-INF/jsp/inc/tab.jsp" />
-<
-    <h2>編集内容の確認</h2>
 
-    <p><strong>タイトル：</strong><%= title %></p>
-    <p><strong>ジャンル：</strong>
+    <h2>この内容でよろしいですか？</h2>
+	<div class="work-link">
+    <p><strong>〇タイトル</strong><br><%= title %></p><br>
+    <p><strong>〇ジャンル</strong><br>
 <%
     if (genreIds != null && genres != null) {
         Set<String> selectedIds = new HashSet<>(Arrays.asList(genreIds));
@@ -44,9 +44,26 @@
         out.print("ジャンルなし");
     }
 %>
-	</p>
-    <p><strong>メモ：</strong><br><%= memo != null ? memo.replaceAll("<", "&lt;").replaceAll(">", "&gt;") : "" %></p>
-
+	</p><br>
+    <p><strong>〇あらすじ・メモ</strong><br><%= memo != null ? memo.replaceAll("<", "&lt;").replaceAll(">", "&gt;") : "" %></p>
+	</div>
+	
+	<div class="btn-group">
+	
+	<!-- 修正フォーム -->
+    <form action="${pageContext.request.contextPath}/WishlistEditServlet" method="post">
+        <input type="hidden" name="step" value="back">
+        <input type="hidden" name="id" value="<%= id %>">
+        <input type="hidden" name="title" value="<%= title %>">
+        <input type="hidden" name="memo" value="<%= memo %>">
+        <% if (genreIds != null) {
+            for (String gid : genreIds) {
+        %>
+            <input type="hidden" name="genreIds" value="<%= gid %>">
+        <% }} %>
+        <input type="submit" value="戻る" class="btn">
+    </form>
+	
     <!-- 更新確定フォーム -->
     <form action="${pageContext.request.contextPath}/WishlistEditServlet" method="post">
         <input type="hidden" name="step" value="update">
@@ -58,23 +75,10 @@
         %>
             <input type="hidden" name="genreIds" value="<%= gid %>">
         <% }} %>
-        <input type="submit" value="登録" class="nav_btn">
+        <input type="submit" value="登録" class="btn">
     </form>
 
-    <!-- 修正フォーム -->
-    <form action="${pageContext.request.contextPath}/WishlistEditServlet" method="post">
-        <input type="hidden" name="step" value="back">
-        <input type="hidden" name="id" value="<%= id %>">
-        <input type="hidden" name="title" value="<%= title %>">
-        <input type="hidden" name="memo" value="<%= memo %>">
-        <% if (genreIds != null) {
-            for (String gid : genreIds) {
-        %>
-            <input type="hidden" name="genreIds" value="<%= gid %>">
-        <% }} %>
-        <input type="submit" value="戻る" class="nav_btn">
-    </form>
-
+   	</div>
     <jsp:include page="/WEB-INF/jsp/inc/footer.jsp" />
 </body>
 </html>

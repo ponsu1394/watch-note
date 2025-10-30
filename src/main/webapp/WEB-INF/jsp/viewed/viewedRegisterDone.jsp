@@ -13,9 +13,9 @@
   		request.setAttribute("pageName", "viewed");
 	%>
 	<jsp:include page="/WEB-INF/jsp/inc/tab.jsp" />
-	
-    <h2>登録が完了しました</h2>
- 
+	<div class="work">
+    	<p>登録が完了しました。</p>
+ 	</div>
 	<div class="btn-group">
     <form action="${pageContext.request.contextPath}/ViewedListServlet" method="get">
         <input type="submit" value="一覧へ戻る" class="nav_btn">
